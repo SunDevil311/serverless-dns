@@ -30,15 +30,16 @@ kill_timeout = "15s"
 # DNS over HTTPS
 [[services]]
   protocol = "tcp"
-  internal_port = 8080
+  internal_port = 8055
   auto_stop_machines = "suspend"
   auto_start_machines = true
 
   [[services.ports]]
     # TODO: ProxyProto v2
     port = 443
+    handlers = ["tls", "http"]  # enables HTTPS
   [[services.ports]]
-    port = 8080
+    port = 8055
 
   [services.concurrency]
     type = "connections"
@@ -59,15 +60,16 @@ kill_timeout = "15s"
 # DNS over TLS
 [[services]]
   protocol = "tcp"
-  internal_port = 10000
+  internal_port = 10555
   auto_stop_machines = "suspend"
   auto_start_machines = true
 
   [[services.ports]]
     # TODO: ProxyProto v2
     port = 853
+    handlers = ["tls"]  # enables DNS over TLS
   [[services.ports]]
-    port = 10000
+    port = 10555
 
   [services.concurrency]
     type = "connections"
