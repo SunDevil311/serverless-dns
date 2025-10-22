@@ -98,3 +98,7 @@ kill_timeout = "15s"
     port = 8888
     timeout = "2s"
     type = "http"
+
+[mounts]
+  source = "rethinkdns_data"
+  destination = "/data"
